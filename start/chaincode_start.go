@@ -40,7 +40,7 @@ func main() {
 // Init resets all the things
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
     if len(args) != 4 {
-        return nil, errors.New("Incorrect number of arguments. Expecting 2")
+        return nil, errors.New("Incorrect number of arguments. Expecting 4")
     }
 
 	err := stub.PutState("shipmentId", []byte(args[0]))
@@ -97,7 +97,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
     fmt.Println("running write()")
 
     if len(args) != 5 {
-        return nil, errors.New("Incorrect number of arguments. Expecting 2. name of the key and value to set")
+        return nil, errors.New("Incorrect number of arguments. Expecting 5")
     }
 
 	var shipmentIdKey = args[0]                 
