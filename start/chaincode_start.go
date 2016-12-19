@@ -99,26 +99,21 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
     if len(args) != 5 {
         return nil, errors.New("Incorrect number of arguments. Expecting 5")
     }
-
-	var shipmentIdKey = args[0]                 
-    var shipmentIdValue = args[1]
-	err = stub.PutState(shipmentIdKey, []byte(shipmentIdValue))  //write the variable into the chaincode state
+                
+    var shipmentIdValue = args[0]
+	err = stub.PutState("shipmentId", []byte(shipmentIdValue))  //write the variable into the chaincode state
+	                
+    var shipmentValueValue = args[1]
+	err = stub.PutState("value", []byte(shipmentValueValue))  //write the variable into the chaincode state
+	                
+    var latitudeValue = args[2]
+	err = stub.PutState("latitude", []byte(latitudeValue))  //write the variable into the chaincode state
+	                 
+    var longitudeValue = args[3]
+	err = stub.PutState("longitude", []byte(longitudeValue))  //write the variable into the chaincode state
 	
-	var shipmentValueKey = args[2]                 
-    var shipmentValueValue = args[3]
-	err = stub.PutState(shipmentValueKey, []byte(shipmentValueValue))  //write the variable into the chaincode state
-	
-	var latitudeKey = args[4]                 
-    var latitudeValue = args[5]
-	err = stub.PutState(latitudeKey, []byte(latitudeValue))  //write the variable into the chaincode state
-	
-	var longitudeKey = args[6]                 
-    var longitudeValue = args[7]
-	err = stub.PutState(longitudeKey, []byte(longitudeValue))  //write the variable into the chaincode state
-	
-	var alertKey = args[8]                 
-    var alertValue = args[9]
-	err = stub.PutState(alertKey, []byte(alertValue))  //write the variable into the chaincode state
+    var alertValue = args[4]
+	err = stub.PutState("alert", []byte(alertValue))  //write the variable into the chaincode state
 	
     if err != nil {
         return nil, err
